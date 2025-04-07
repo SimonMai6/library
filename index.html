@@ -18,13 +18,37 @@
             <th id="id">UUID</th>
         </thead>
         <tbody>
-            <tr>
-                <th id="books" scope="row" rowspan="0">Books</th>
-            </tr>
-            
+            <th id="books" scope="row" rowspan="0">Books</th>
         </tbody>
-        
     </table>
-    <button type="button">Add Book</button>
+
+    <dialog id="dialog">
+        <form id='myForm' method="dialog">
+            <p>
+                <label>
+                  Book title:
+                  <input type="text" id="book-title" placeholder="Enter text" required />
+                </label>
+            </p>
+            <p>
+                <label>
+                    Book author:
+                  <input type="text" id="book-author" placeholder="Enter text" required />
+                </label>
+            </p>
+            <p>
+                <label>
+                    Book pages:
+                  <input type="text" id="book-pages" placeholder="Enter text" required />
+                </label>
+            </p>
+            <input type="submit" id="js-submit" value="Submit" />
+            <input type="submit" id="js-close" value="Close" />
+        </form>
+    </dialog>
+    <p>
+        <button id="show-dialog">New Book</button>
+    </p>
+    
 </body>
 </html>
