@@ -1,4 +1,5 @@
 const myLibrary = [];
+let isNewBook = false;
 
 function Book(title, author, pages, id) {
     this.title = title;
@@ -14,37 +15,56 @@ function addBookToLibrary(title, author, pages) {
 }
 
 function displayBookToTable() {
-    const bookTable = document.getElementById("bookTable");
-    for (const key of myLibrary) {
-        const rowLength = bookTable.rows.length;
-        if (myLibrary.length+1 !== rowLength){
-            const newRow = bookTable.insertRow(rowLength);
-        }
-        for (const value of Object.values(key)){
-            const row = bookTable.rows[rowLength-1];
+    const bookTable = document.getElementById("book-table");
+    if (isNewBook) {
+        const newRow = bookTable.insertRow(myLibrary.length);
+        for (const value of Object.values(myLibrary[myLibrary.length-1])) {
+            const row = bookTable.rows[myLibrary.length];
             const newCell = row.insertCell();
             newCell.textContent = value;
-        }   
+        }
     }
+    else {
+        for (const key of myLibrary) {
+            const rowLength = bookTable.rows.length;
+            if (myLibrary.length+1 !== rowLength){
+                const newRow = bookTable.insertRow(rowLength);
+            }
+            for (const value of Object.values(key)){
+                const row = bookTable.rows[rowLength-1];
+                const newCell = row.insertCell();
+                newCell.textContent = value;
+            }   
+        }
+    }
+    isNewBook = false;
 }
 
 const showBtn = document.getElementById("show-dialog");
 const dialog = document.getElementById("dialog");
 const jsClose = document.getElementById("js-close");
 const jsSubmit = document.getElementById("js-submit");
+const myForm = document.getElementById("my-form")
 
 showBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-jsSubmit.addEventListener("click", () => {
+jsSubmit.addEventListener("click", (event) => {
+    event.preventDefault();
     const bookTitle = document.getElementById("book-title");
     const bookAuthor = document.getElementById("book-author");
-    const bookPages = document.getElementById("book-pages")
-    addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value);
-    console.log(myLibrary)
+    const bookPages = document.getElementById("book-pages");
+    if (myForm.reportValidity() === true) {
+        addBookToLibrary(bookTitle.value, bookAuthor.value, bookPages.value);
+        myForm.submit();
+        myForm.reset();
+        isNewBook = true;
+        displayBookToTable();
+    }
+    
 });
-// document.getElementById("myForm").reset();
+
 jsClose.addEventListener("click", (event) => {
     event.preventDefault();
     dialog.close();

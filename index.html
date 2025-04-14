@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <table id="bookTable">
+    <table id="book-table">
         <thead>
             <td>&nbsp;</td>
             <th id="title">Title</th>
@@ -23,24 +23,18 @@
     </table>
 
     <dialog id="dialog">
-        <form id='myForm' method="dialog">
+        <form id='my-form' method="dialog">
             <p>
-                <label>
-                  Book title:
-                  <input type="text" id="book-title" placeholder="Enter text" required />
-                </label>
+                <label for="book-title">Book title:</label>
+                <input type="text" id="book-title" name="book-title" placeholder="Enter text" required />
             </p>
             <p>
-                <label>
-                    Book author:
-                  <input type="text" id="book-author" placeholder="Enter text" required />
-                </label>
+                <label for="book-author">Book author:</label>  
+                <input type="text" id="book-author" name="book-author" placeholder="Enter text" required />
             </p>
             <p>
-                <label>
-                    Book pages:
-                  <input type="text" id="book-pages" placeholder="Enter text" required />
-                </label>
+                <label for="book-pages">Book pages:</label>
+                <input type="text" id="book-pages" name="book-pages" placeholder="Enter text" required />
             </p>
             <input type="submit" id="js-submit" value="Submit" />
             <input type="submit" id="js-close" value="Close" />
