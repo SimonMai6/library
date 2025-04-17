@@ -34,7 +34,12 @@ function displayBookToTable() {
                 const row = bookTable.rows[rowLength-1];
                 const newCell = row.insertCell();
                 newCell.textContent = value;
-            }   
+            }
+            const row = bookTable.rows[rowLength-1];
+            const newCell = row.insertCell();
+            const btn = document.createElement("button");
+            btn.textContent = "remove";
+            newCell.appendChild(btn);
         }
     }
     isNewBook = false;
