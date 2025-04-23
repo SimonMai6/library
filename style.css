@@ -1,3 +1,7 @@
 table, th, td {
     border: black solid 1px;
 }
+
+.remove-btn {
+    margin: 10px;
+}

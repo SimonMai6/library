@@ -1,5 +1,11 @@
 const myLibrary = [];
 let isNewBook = false;
+const showBtn = document.getElementById("show-dialog");
+const dialog = document.getElementById("dialog");
+const jsClose = document.getElementById("js-close");
+const jsSubmit = document.getElementById("js-submit");
+const myForm = document.getElementById("my-form");
+
 
 function Book(title, author, pages, id) {
     this.title = title;
@@ -16,40 +22,37 @@ function addBookToLibrary(title, author, pages) {
 
 function displayBookToTable() {
     const bookTable = document.getElementById("book-table");
+    console.log(isNewBook);
     if (isNewBook) {
-        const newRow = bookTable.insertRow(myLibrary.length);
+        const newRow = bookTable.insertRow(myLibrary.length+1);
+        console.log(myLibrary[myLibrary.length-1]);
         for (const value of Object.values(myLibrary[myLibrary.length-1])) {
-            const row = bookTable.rows[myLibrary.length];
-            const newCell = row.insertCell();
+            const newCell = newRow.insertCell();
             newCell.textContent = value;
         }
+        addRemoveBtn(newRow);
     }
     else {
         for (const key of myLibrary) {
             const rowLength = bookTable.rows.length;
-            if (myLibrary.length+1 !== rowLength){
-                const newRow = bookTable.insertRow(rowLength);
-            }
+            const newRow = bookTable.insertRow(rowLength);
             for (const value of Object.values(key)){
-                const row = bookTable.rows[rowLength-1];
-                const newCell = row.insertCell();
+                const newCell = newRow.insertCell();
                 newCell.textContent = value;
             }
-            const row = bookTable.rows[rowLength-1];
-            const newCell = row.insertCell();
-            const btn = document.createElement("button");
-            btn.textContent = "remove";
-            newCell.appendChild(btn);
+            addRemoveBtn(newRow);
         }
     }
     isNewBook = false;
 }
 
-const showBtn = document.getElementById("show-dialog");
-const dialog = document.getElementById("dialog");
-const jsClose = document.getElementById("js-close");
-const jsSubmit = document.getElementById("js-submit");
-const myForm = document.getElementById("my-form")
+function addRemoveBtn(row) {
+    const newCell = row.insertCell();
+    const btn = document.createElement("button");
+    btn.classList.add("remove-btn");
+    btn.textContent = "remove";
+    newCell.appendChild(btn);
+}
 
 showBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -67,7 +70,6 @@ jsSubmit.addEventListener("click", (event) => {
         isNewBook = true;
         displayBookToTable();
     }
-    
 });
 
 jsClose.addEventListener("click", (event) => {
@@ -75,6 +77,11 @@ jsClose.addEventListener("click", (event) => {
     dialog.close();
 });
 
+document.body.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-btn")) {
+        console.log("Button clicked:", event.target);
+    }
+});
 
 
 addBookToLibrary("The Great Gatsby", "F. Scott Fitzgerald", 180);
@@ -92,6 +99,4 @@ addBookToLibrary("The Divine Comedy", "Dante Alighieri", 800);
 addBookToLibrary("Wuthering Heights", "Emily Brontë", 348);
 addBookToLibrary("Frankenstein", "Mary Shelley", 280);
 addBookToLibrary("Dracula", "Bram Stoker", 488);
-
-
 displayBookToTable();
