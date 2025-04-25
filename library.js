@@ -5,6 +5,7 @@ const dialog = document.getElementById("dialog");
 const jsClose = document.getElementById("js-close");
 const jsSubmit = document.getElementById("js-submit");
 const myForm = document.getElementById("my-form");
+let i = 1;
 
 
 function Book(title, author, pages, id) {
@@ -25,24 +26,27 @@ function displayBookToTable() {
     console.log(isNewBook);
     if (isNewBook) {
         const newRow = bookTable.insertRow(myLibrary.length+1);
-        console.log(myLibrary[myLibrary.length-1]);
+        newRow.id = "row-" + i;
         for (const value of Object.values(myLibrary[myLibrary.length-1])) {
             const newCell = newRow.insertCell();
             newCell.textContent = value;
+            ++i;
         }
         addRemoveBtn(newRow);
     }
     else {
         for (const key of myLibrary) {
-            const rowLength = bookTable.rows.length;
-            const newRow = bookTable.insertRow(rowLength);
+            const newRow = bookTable.insertRow(bookTable.rows.length);
+            newRow.id = "row-" + i;
             for (const value of Object.values(key)){
                 const newCell = newRow.insertCell();
                 newCell.textContent = value;
             }
+            ++i;
             addRemoveBtn(newRow);
         }
     }
+    
     isNewBook = false;
 }
 
@@ -79,7 +83,15 @@ jsClose.addEventListener("click", (event) => {
 
 document.body.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove-btn")) {
-        console.log("Button clicked:", event.target);
+        const removeRow = event.target.parentNode.parentNode;
+        const rowTitle = removeRow.firstElementChild.innerHTML;
+        const index = myLibrary.indexOf(myLibrary.find((element) => element.title === rowTitle));
+        if (index > -1) {
+            myLibrary.splice(index, 1);
+        }
+        removeRow.remove();
+        console.log(myLibrary);
+
     }
 });
 
