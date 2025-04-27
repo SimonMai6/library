@@ -1,7 +1,44 @@
-table, th, td {
-    border: black solid 1px;
+html {
+    background-color: #8DD7D8;
+    
 }
 
-.remove-btn {
+table, th, td {
+    border: #43BBBC solid 2px;
+    background-color: #B2E5E6;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.remove-btn, tr{
     margin: 10px;
+}
+
+th, td{
+    padding: 5px;
+}
+
+table {
+    text-align: center;
+}
+
+#show-dialog, .remove-btn{
+    background-color: #D8F2F3;
+    border: gray solid 1px;
+    border-radius: 14px;
+    font-size: 16px;
+    width: 120px;
+    height: 40px;
+}
+
+#show-dialog:active , .remove-btn:active{
+    background-color: #c5f0f1;
+    box-shadow: inset 0px 0px 5px #a6cbcc;
+    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+    -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+    outline: none;
 }

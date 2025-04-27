@@ -46,7 +46,6 @@ function displayBookToTable() {
             addRemoveBtn(newRow);
         }
     }
-    
     isNewBook = false;
 }
 
