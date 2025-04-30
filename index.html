@@ -16,6 +16,7 @@
             <th id="author">Author</th>
             <th id="book">Books</th>
             <th id="id">UUID</th>
+            <th id="read">Read</th>
             <th id="remove">Remove</th>
         </thead>
         <tbody>
@@ -35,7 +36,14 @@
             </p>
             <p>
                 <label for="book-pages">Book pages:</label>
-                <input type="text" id="book-pages" name="book-pages" placeholder="Enter text" required />
+                <input type="number" id="book-pages" name="book-pages" placeholder="Enter text" required />
+            </p>
+            <p>
+                <label for="book-read">Read:</label>
+                <select name="book-read" id="book-read">
+                    <option value="unread">Unread</option>
+                    <option value="read">Read</option>
+                </select>
             </p>
             <input type="submit" id="js-submit" value="Submit" />
             <input type="submit" id="js-close" value="Close" />

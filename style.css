@@ -14,11 +14,11 @@ body {
     align-items: center;
 }
 
-.remove-btn, tr{
+.remove-btn, tr {
     margin: 10px;
 }
 
-th, td{
+th, td {
     padding: 5px;
 }
 
@@ -26,7 +26,7 @@ table {
     text-align: center;
 }
 
-#show-dialog, .remove-btn{
+#show-dialog, .remove-btn, .read {
     background-color: #D8F2F3;
     border: gray solid 1px;
     border-radius: 14px;
@@ -35,10 +35,15 @@ table {
     height: 40px;
 }
 
-#show-dialog:active , .remove-btn:active{
+#show-dialog:active , .remove-btn:active, .read:active {
     background-color: #c5f0f1;
     box-shadow: inset 0px 0px 5px #a6cbcc;
     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
     -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
     outline: none;
 }
+
+#show-dialog:hover, .remove-btn:hover, .read:hover {
+    background-color: #c5f0f1;
+}
+
