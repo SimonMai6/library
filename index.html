@@ -26,27 +26,29 @@
 
     <dialog id="dialog">
         <form id='my-form' method="dialog">
-            <p>
+            <p class="input">
                 <label for="book-title">Book title:</label>
                 <input type="text" id="book-title" name="book-title" placeholder="Enter text" required />
             </p>
-            <p>
+            <p class="input">
                 <label for="book-author">Book author:</label>  
                 <input type="text" id="book-author" name="book-author" placeholder="Enter text" required />
             </p>
-            <p>
+            <p class="input">
                 <label for="book-pages">Book pages:</label>
                 <input type="number" id="book-pages" name="book-pages" placeholder="Enter text" required />
             </p>
-            <p>
+            <p class="input">
                 <label for="book-read">Read:</label>
                 <select name="book-read" id="book-read">
                     <option value="unread">Unread</option>
                     <option value="read">Read</option>
                 </select>
             </p>
-            <input type="submit" id="js-submit" value="Submit" />
-            <input type="submit" id="js-close" value="Close" />
+            <p>
+                <input type="submit" id="js-submit" value="Submit" />
+                <input type="submit" id="js-close" value="Close" />
+            </p>
         </form>
     </dialog>
     <p>

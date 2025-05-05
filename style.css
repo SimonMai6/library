@@ -26,7 +26,7 @@ table {
     text-align: center;
 }
 
-#show-dialog, .remove-btn, .read {
+#show-dialog, .remove-btn, .read-btn, #js-submit, #js-close {
     background-color: #D8F2F3;
     border: gray solid 1px;
     border-radius: 14px;
@@ -35,7 +35,7 @@ table {
     height: 40px;
 }
 
-#show-dialog:active , .remove-btn:active, .read:active {
+#show-dialog:active , .remove-btn:active, .read-btn:active , #js-submit:active, #js-close:active {
     background-color: #c5f0f1;
     box-shadow: inset 0px 0px 5px #a6cbcc;
     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
@@ -43,7 +43,41 @@ table {
     outline: none;
 }
 
-#show-dialog:hover, .remove-btn:hover, .read:hover {
+#show-dialog:hover, .remove-btn:hover, .read-btn:hover, #js-submit:hover, #js-close:hover {
     background-color: #c5f0f1;
 }
 
+#dialog {
+    background-color: #B2E5E6;
+    border: #43BBBC solid 4px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+}
+
+.input > label {
+    font-size: 25px;
+}
+
+
+input[type="text"],
+input[type="number"],
+select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#my-form {
+    display:flex;
+    flex-direction: column;
+    width: 400px;
+    height: 350px;
+}
+
+label {
+    width: 150px;
+}

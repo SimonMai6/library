@@ -86,21 +86,36 @@ jsClose.addEventListener("click", (event) => {
 
 document.body.addEventListener("click", (event) => {
     if (event.target.classList.contains("remove-btn")) {
-        const removeRow = event.target.parentNode.parentNode;
-        const rowTitle = removeRow.firstElementChild.innerHTML;
-        const index = myLibrary.indexOf(myLibrary.find((element) => element.title === rowTitle));
-        if (index > -1) {
-            myLibrary.splice(index, 1);
-        }
-        removeRow.remove();
-        console.log(myLibrary);
-        --i;
+        removeRow(event);
+    }
+    else if (event.target.classList.contains("read-btn")) {
+        bookRead(event);
     }
 });
 
+function removeRow(removeBtn) {
+    const targetRow = removeBtn.target.parentNode.parentNode;
+    const rowTitle = targetRow.firstElementChild.innerHTML;
+    const index = myLibrary.indexOf(myLibrary.find((element) => element.title === rowTitle));
+    if (index > -1) {
+        myLibrary.splice(index, 1);
+    }
+    targetRow.remove();
+    --i;
+}
+
+function bookRead(readBtn) {
+    if (readBtn.target.textContent === "Read") {
+        readBtn.target.textContent = "Unread";
+    }
+    else {
+        readBtn.target.textContent = "Read";
+    }
+}
+
 function readBtn(isRead) {
     const newBtn = document.createElement("button");
-    newBtn.classList.add("read")
+    newBtn.classList.add("read-btn")
     if (isRead) {
         newBtn.textContent = "Read";
         return(newBtn);
